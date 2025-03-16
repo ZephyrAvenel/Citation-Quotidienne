@@ -1,54 +1,38 @@
-// Importation des modules nécessaires
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 
-// Charger les variables d’environnement
-dotenv.config();
+dotenv.config(); // Charger les variables d'environnement
 
-// Initialisation de l'application Express
 const app = express();
-const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_NINJAS_KEY; // Assurez-vous que cette clé est bien définie dans votre fichier .env
+const PORT = process.env.PORT || 3000; // 👈 Render définira le port en production
 
-// Middleware
 app.use(cors());
 
-// 🚀 Endpoint pour récupérer une citation depuis l'API Ninjas
+// Endpoint pour récupérer une citation
 app.get('/quote', async (req, res) => {
     try {
-        console.log("🔄 Fetching quote from API Ninjas...");
-
-        // Construire l'URL de l'API
-        const url = `https://api.api-ninjas.com/v1/quotes`;
-        
-        // Effectuer la requête à l'API avec la clé d'API
-        const response = await fetch(url, {
-            headers: { 'X-Api-Key': API_KEY }
-        });
-
+        const response = await fetch('https://api.librequotes.com/v1/random?format=json');
         const data = await response.json();
-        console.log("✅ API Response:", data);
 
-        // Vérifier si l'API a bien retourné une citation
-        if (data.length > 0) {
-            res.json({
-                quote: data[0].quote,
-                author: data[0].author,  // ✅ Ajout de l’auteur
-                category: data[0].category
-            });
-        } else {
-            res.status(404).json({ error: "Aucune citation trouvée" });
+        if (!data || data.length === 0) {
+            return res.status(404).json({ error: 'Aucune citation trouvée.' });
         }
 
+        const quote = {
+            quote: data[0].quote,
+            author: data[0].author,
+            category: data[0].category || "unknown"
+        };
+
+        res.json(quote);
     } catch (error) {
-        console.error("❌ Erreur lors de la récupération de la citation :", error);
-        res.status(500).json({ error: "Erreur interne du serveur." });
+        console.error("Erreur lors de la récupération des citations :", error);
+        res.status(500).json({ error: 'Erreur interne du serveur.' });
     }
 });
 
-// Lancer le serveur
 app.listen(PORT, () => {
     console.log(`✅ Serveur en cours d'exécution sur http://localhost:${PORT}`);
 });
