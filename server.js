@@ -17,7 +17,7 @@ const agent = new https.Agent({ rejectUnauthorized: false });
 app.get('/quote', async (req, res) => {
     try {
         console.log("Fetching quote from Quotable API...");
-        const response = await fetch('https://api.quotable.io/quotes?author=Alfred%20Jarry', { agent });
+        const response = await fetch('http://api.quotable.io/quotes?author=Alfred%20Jarry');
         const data = await response.json();
 
         console.log("API Response:", data);
