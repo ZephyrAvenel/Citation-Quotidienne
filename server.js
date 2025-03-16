@@ -1,42 +1,46 @@
-import dotenv from 'dotenv';
+// Importation des modules nécessaires
 import express from 'express';
-import fetch from 'node-fetch';
 import cors from 'cors';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
-dotenv.config(); // Charger les variables d'environnement
+// Charger les variables d’environnement
+dotenv.config();
 
+// Initialisation de l'application Express
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_NINJAS_KEY; // Clé API Ninjas stockée dans .env
+const API_KEY = process.env.API_NINJAS_KEY; // Assurez-vous que cette clé est bien définie dans votre fichier .env
 
+// Middleware
 app.use(cors());
 
-// ✅ Endpoint pour récupérer une citation d'Alfred Jarry via l'API Ninjas
+// 🚀 Endpoint pour récupérer une citation depuis l'API Ninjas
 app.get('/quote', async (req, res) => {
     try {
-        console.log("📡 Fetching quote from API Ninjas...");
+        console.log("🔄 Fetching quote from API Ninjas...");
 
-        const author = "Alfred Jarry"; // Auteur souhaité
-        const url = `https://api.api-ninjas.com/v1/quotes?author=${encodeURIComponent(author)}`;
+        // Construire l'URL de l'API
+        const url = `https://api.api-ninjas.com/v1/quotes`;
         
+        // Effectuer la requête à l'API avec la clé d'API
         const response = await fetch(url, {
-            headers: {
-                'X-Api-Key': API_KEY // Ajouter la clé API dans les en-têtes
-            }
+            headers: { 'X-Api-Key': API_KEY }
         });
 
-        if (!response.ok) {
-            throw new Error(`Erreur API Ninjas: ${response.statusText}`);
-        }
-
         const data = await response.json();
-
-        if (data.length === 0) {
-            return res.status(404).json({ error: "Aucune citation trouvée pour cet auteur." });
-        }
-
         console.log("✅ API Response:", data);
-        res.json({ quote: data[0].quote });
+
+        // Vérifier si l'API a bien retourné une citation
+        if (data.length > 0) {
+            res.json({
+                quote: data[0].quote,
+                author: data[0].author,  // ✅ Ajout de l’auteur
+                category: data[0].category
+            });
+        } else {
+            res.status(404).json({ error: "Aucune citation trouvée" });
+        }
 
     } catch (error) {
         console.error("❌ Erreur lors de la récupération de la citation :", error);
@@ -44,7 +48,7 @@ app.get('/quote', async (req, res) => {
     }
 });
 
-// ✅ Démarrer le serveur
+// Lancer le serveur
 app.listen(PORT, () => {
-    console.log(`🚀 Serveur en cours d'exécution sur http://localhost:${PORT}`);
+    console.log(`✅ Serveur en cours d'exécution sur http://localhost:${PORT}`);
 });
