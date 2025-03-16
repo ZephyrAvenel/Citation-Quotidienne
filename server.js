@@ -2,7 +2,9 @@ import dotenv from 'dotenv';
 import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
-import https from 'https';  // Ajout pour gérer SSL
+
+// Forcer Node.js à ignorer les erreurs SSL (problème de certificat expiré)
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 dotenv.config();
 
@@ -11,13 +13,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-// Ignorer les erreurs SSL
-const agent = new https.Agent({ rejectUnauthorized: false });
-
 app.get('/quote', async (req, res) => {
     try {
         console.log("Fetching quote from Quotable API...");
-        const response = await fetch('http://api.quotable.io/quotes?author=Alfred%20Jarry');
+        const response = await fetch('https://api.quotable.io/quotes?author=Alfred%20Jarry');
         const data = await response.json();
 
         console.log("API Response:", data);
