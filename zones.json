@@ -1,8 +1,4 @@
 {
-  "version": "2.0",
-  "univers": "Cosmologie des Récits Vivants",
-  "auteur": "Zéphyr Avenel",
-
   "porte-vivant": {
     "label": "Porte du Vivant",
     "type": "seuil",
@@ -31,7 +27,6 @@
     "fragment": "Habiter le monde commence parfois par une autre manière d’habiter l’attention.",
     "ancre": "#za-chic-planete-final",
     "liens": [
-      "za-chic-planete-final",
       "point-jonction",
       "radio-recits-vivants"
     ]
@@ -48,7 +43,6 @@
     "fragment": "Nous pensons utiliser des outils. Mais nous habitons des récits.",
     "ancre": "#numerique-recit",
     "liens": [
-      "structures",
       "art-ecriture-augmentees",
       "atlas-recits-vivants"
     ]
