@@ -103,7 +103,7 @@ app.post('/api/traversee', (req, res) => {
       type:
         req.body?.type || null,
 
-      traversée:
+      traversee:
         req.body?.traversee || null
 
     };
@@ -243,7 +243,7 @@ app.get('/api/traversee-type', (req, res) => {
       resultat.id,
 
     traversee:
-      resultat.traversée
+      resultat.traversee
 
   });
 
