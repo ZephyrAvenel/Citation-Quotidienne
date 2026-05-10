@@ -65,6 +65,27 @@ async function traverserAuHasard() {
     return;
   }
 
+  /* ===================================== */
+  /* 🌀 BOUTON VIVANT */
+  /* ===================================== */
+
+  const bouton =
+    document.querySelector(
+      '.traversee-widget button'
+    );
+
+  if (bouton) {
+
+    bouton.disabled = true;
+
+    bouton.innerHTML =
+      '🌀 Le territoire s’éveille…';
+
+    bouton.style.opacity = '.82';
+
+    bouton.style.cursor = 'wait';
+  }
+
   try {
 
     const response = await fetch(
@@ -131,6 +152,22 @@ async function traverserAuHasard() {
     /* ===================================== */
 
     appliquerClimat(data.climat);
+
+    /* ===================================== */
+    /* 🌿 RESTAURE BOUTON */
+    /* ===================================== */
+
+    if (bouton) {
+
+      bouton.disabled = false;
+
+      bouton.innerHTML =
+        '🌀 Ouvrir une traversée';
+
+      bouton.style.opacity = '1';
+
+      bouton.style.cursor = 'pointer';
+    }
 
     /* ===================================== */
     /* 🌀 NAVIGATION DIFFÉRÉE */
@@ -201,9 +238,17 @@ async function traverserAuHasard() {
       error
     );
 
-    alert(
-      JSON.stringify(error.message)
-    );
+    if (bouton) {
+
+      bouton.disabled = false;
+
+      bouton.innerHTML =
+        '🌀 Ouvrir une traversée';
+
+      bouton.style.opacity = '1';
+
+      bouton.style.cursor = 'pointer';
+    }
 
     afficherFragment(
       'La traversée semble momentanément indisponible.'
