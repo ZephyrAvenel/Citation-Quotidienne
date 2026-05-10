@@ -25,6 +25,28 @@ const {
 const app = express();
 
 /* ===================================== */
+/* 🧪 TEST SIMPLE */
+/* ===================================== */
+
+app.get('/api/test-zone', (req, res) => {
+
+  const ids =
+    Object.keys(require('./zones.json'));
+
+  res.json({
+
+    total: ids.length,
+
+    premiere: ids[0],
+
+    exemple:
+      require('./zones.json')[ids[0]]
+
+  });
+
+});
+
+/* ===================================== */
 /* 🌿 MIDDLEWARES */
 /* ===================================== */
 
