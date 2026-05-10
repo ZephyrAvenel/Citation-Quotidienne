@@ -68,10 +68,38 @@ async function traverserAuHasard() {
   try {
 
     const response = await fetch(
-      'https://zephyr-navigation-vivante.onrender.com/api/traversee'
+      'https://zephyr-navigation-vivante.onrender.com/api/traversee',
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+
+          historique:
+            recupererHistorique()
+
+        })
+
+      }
     );
 
+    if (!response.ok) {
+
+      throw new Error(
+        `HTTP ${response.status}`
+      );
+
+    }
+
     const data = await response.json();
+
+    console.log(
+      'Traversée reçue :',
+      data
+    );
 
     const historique =
       recupererHistorique();
@@ -135,8 +163,12 @@ async function traverserAuHasard() {
   } catch (error) {
 
     console.error(
-      'Erreur traversée :',
+      'Erreur traversée détaillée :',
       error
+    );
+
+    alert(
+      JSON.stringify(error.message)
     );
 
     afficherFragment(
