@@ -91,7 +91,7 @@ function choisirZone(
   const {
     climat = null,
     type = null,
-    traversée = null
+    traversee = null
   } = options;
 
   /* ===================================== */
@@ -105,12 +105,12 @@ function choisirZone(
   /* ===================================== */
 
   if (
-    traversée &&
-    traversees[traversée]
+    traversee &&
+    traversees[traversee]
   ) {
 
     candidates =
-      traversees[traversée].zones
+      traversees[traversee].zones
         .filter(id => zones[id]);
 
   }
