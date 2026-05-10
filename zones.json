@@ -3,11 +3,14 @@
     "label": "Porte du Vivant",
     "type": "seuil",
     "intensite": 0.3,
-    "climat": "organique",
+    "climat": "vivant",
     "rarete": 0.2,
+    "fragment": "Certaines portes ne demandent pas d’être franchies. Seulement reconnues.",
+    "ancre": "#porte-vivante",
     "liens": [
       "habitabilite",
-      "manifeste-auteur"
+      "manifeste-auteur",
+      "marge-vivante"
     ]
   },
 
@@ -17,9 +20,12 @@
     "intensite": 0.4,
     "climat": "respiration",
     "rarete": 0.1,
+    "fragment": "Habiter le monde commence parfois par une autre manière d’habiter l’attention.",
+    "ancre": "#za-chic-planete-final",
     "liens": [
       "za-chic-planete-final",
-      "point-jonction"
+      "point-jonction",
+      "radio-recits-vivants"
     ]
   },
 
@@ -27,11 +33,119 @@
     "label": "Le numérique est un récit",
     "type": "critique",
     "intensite": 0.8,
-    "climat": "lucidite",
+    "climat": "plurivers",
     "rarete": 0.4,
+    "fragment": "Nous pensons utiliser des outils. Mais nous habitons des récits.",
+    "ancre": "#numerique-recit",
     "liens": [
       "structures",
-      "art-ecriture-augmentees"
+      "art-ecriture-augmentees",
+      "atlas-recits-vivants"
+    ]
+  },
+
+  "atlas-recits-vivants": {
+    "label": "Atlas des Récits Vivants",
+    "type": "cartographie",
+    "intensite": 0.7,
+    "climat": "plurivers",
+    "rarete": 0.25,
+    "fragment": "Certaines cartes ne décrivent pas le monde. Elles révèlent les passages.",
+    "ancre": "#atlas-recits-vivants",
+    "liens": [
+      "marge-vivante",
+      "point-jonction",
+      "radio-recits-vivants"
+    ]
+  },
+
+  "radio-recits-vivants": {
+    "label": "Radio des Récits Vivants",
+    "type": "ecoute",
+    "intensite": 0.5,
+    "climat": "veilleurs",
+    "rarete": 0.18,
+    "fragment": "Certaines voix ne cherchent pas à convaincre. Seulement à maintenir une présence.",
+    "ancre": "#radio-recits-vivants",
+    "liens": [
+      "habitabilite",
+      "porte-vivant",
+      "marge-vivante"
+    ]
+  },
+
+  "marge-vivante": {
+    "label": "Marge Vivante",
+    "type": "limite",
+    "intensite": 0.6,
+    "climat": "veilleurs",
+    "rarete": 0.35,
+    "fragment": "Ce qui semble périphérique devient parfois le véritable lieu de transformation.",
+    "ancre": "#marge-vivante",
+    "liens": [
+      "atlas-recits-vivants",
+      "porte-vivant",
+      "au-seuil-visible"
+    ]
+  },
+
+  "au-seuil-visible": {
+    "label": "Au seuil du visible",
+    "type": "presence",
+    "intensite": 0.7,
+    "climat": "interdit",
+    "rarete": 0.42,
+    "fragment": "Certaines formes apparaissent seulement lorsque le regard ralentit.",
+    "ancre": "#au-seuil-visible",
+    "liens": [
+      "marge-vivante",
+      "porte-vivant",
+      "point-jonction"
+    ]
+  },
+
+  "point-jonction": {
+    "label": "Point de Jonction",
+    "type": "passage",
+    "intensite": 0.75,
+    "climat": "plurivers",
+    "rarete": 0.3,
+    "fragment": "Il existe des lieux où plusieurs récits cessent de s’opposer et commencent à coexister.",
+    "ancre": "#point-jonction",
+    "liens": [
+      "atlas-recits-vivants",
+      "habitabilite",
+      "radio-recits-vivants"
+    ]
+  },
+
+  "art-ecriture-augmentees": {
+    "label": "Art & Écriture augmentées",
+    "type": "creation",
+    "intensite": 0.55,
+    "climat": "vivant",
+    "rarete": 0.2,
+    "fragment": "Créer ne consiste pas toujours à produire davantage. Parfois il s’agit de laisser émerger autrement.",
+    "ancre": "#art-ecriture-augmentees",
+    "liens": [
+      "numerique-est-un-recit",
+      "manifeste-auteur",
+      "atlas-recits-vivants"
+    ]
+  },
+
+  "manifeste-auteur": {
+    "label": "Manifeste d’Auteur",
+    "type": "orientation",
+    "intensite": 0.45,
+    "climat": "respiration",
+    "rarete": 0.12,
+    "fragment": "Un manifeste vivant n’impose pas une vérité. Il trace une manière d’habiter le passage.",
+    "ancre": "#manifeste-auteur",
+    "liens": [
+      "porte-vivant",
+      "art-ecriture-augmentees",
+      "habitabilite"
     ]
   }
 }
