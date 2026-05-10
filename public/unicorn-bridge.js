@@ -192,7 +192,7 @@ async function traverserAuHasard() {
         }
       }
 
-    }, 2400);
+    }, 6700);
 
   } catch (error) {
 
