@@ -1,19 +1,22 @@
 function verifierSessionLocale() {
 
-  let traverses = Number(
+  let traversees = Number(
     sessionStorage.getItem('traversees') || 0
   );
 
-  traverses += 1;
+  traversees += 1;
 
-  sessionStorage.setItem('traversees', traverses);
+  sessionStorage.setItem(
+    'traversees',
+    traversees
+  );
 
-  if (traverses > 12) {
+  if (traversees > 12) {
 
     return {
       autorise: false,
       message:
-        'Le territoire semble vouloir ralentir la traversée pour aujourd’hui.'
+        'Le territoire semble vouloir ralentir la traversée pour aujourd’hui.<br><br>Certaines portes demandent davantage de silence entre deux passages.'
     };
   }
 
@@ -22,6 +25,35 @@ function verifierSessionLocale() {
   };
 }
 
+/* ===================================== */
+/* 🌿 MÉMOIRE ANTI-RÉPÉTITION */
+/* ===================================== */
+
+function recupererHistorique() {
+
+  return JSON.parse(
+    sessionStorage.getItem('zonesVisitees') || '[]'
+  );
+}
+
+function sauvegarderHistorique(zone) {
+
+  let historique = recupererHistorique();
+
+  historique.push(zone);
+
+  historique = historique.slice(-3);
+
+  sessionStorage.setItem(
+    'zonesVisitees',
+    JSON.stringify(historique)
+  );
+}
+
+/* ===================================== */
+/* 🌌 TRAVERSÉE PRINCIPALE */
+/* ===================================== */
+
 async function traverserAuHasard() {
 
   const session = verifierSessionLocale();
@@ -29,6 +61,7 @@ async function traverserAuHasard() {
   if (!session.autorise) {
 
     afficherFragment(session.message);
+
     return;
   }
 
@@ -40,43 +73,164 @@ async function traverserAuHasard() {
 
     const data = await response.json();
 
+    const historique =
+      recupererHistorique();
+
+    /* ===================================== */
+    /* 🚫 ÉVITE RÉPÉTITION IMMÉDIATE */
+    /* ===================================== */
+
+    if (
+      historique.includes(data.zone)
+    ) {
+
+      console.log(
+        'Zone récemment visitée :',
+        data.zone
+      );
+    }
+
+    sauvegarderHistorique(data.zone);
+
+    /* ===================================== */
+    /* ✨ FRAGMENT */
+    /* ===================================== */
+
     afficherFragment(data.fragment);
+
+    /* ===================================== */
+    /* 🌫️ CLIMAT */
+    /* ===================================== */
 
     appliquerClimat(data.climat);
 
-    const cible = document.getElementById(data.zone);
+    /* ===================================== */
+    /* 🌀 NAVIGATION DIFFÉRÉE */
+    /* ===================================== */
 
-    if (cible) {
+    setTimeout(() => {
 
-      cible.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+      if (data.ancre) {
+
+        window.location.hash =
+          data.ancre;
+
+      } else {
+
+        const cible =
+          document.getElementById(data.zone);
+
+        if (cible) {
+
+          cible.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+        }
+      }
+
+    }, 2400);
 
   } catch (error) {
-    console.error(error);
+
+    console.error(
+      'Erreur traversée :',
+      error
+    );
+
+    afficherFragment(
+      'La traversée semble momentanément indisponible.'
+    );
   }
 }
+
+/* ===================================== */
+/* 🌿 AFFICHAGE FRAGMENT */
+/* ===================================== */
 
 function afficherFragment(texte) {
 
-  const bloc = document.getElementById('fragment-vivant');
+  const bloc =
+    document.getElementById(
+      'fragment-vivant'
+    );
 
-  if (bloc) {
-    bloc.innerText = texte;
-  }
+  if (!bloc) return;
+
+  bloc.innerHTML = `
+    <div class="fragment-interieur">
+      ${texte}
+    </div>
+  `;
+
+  bloc.classList.remove(
+    'visible'
+  );
+
+  /* Force repaint mobile */
+
+  void bloc.offsetWidth;
+
+  setTimeout(() => {
+
+    bloc.classList.add(
+      'visible'
+    );
+
+  }, 60);
 }
+
+/* ===================================== */
+/* 🌫️ CLIMATS SYMBOLIQUES */
+/* ===================================== */
 
 function appliquerClimat(climat) {
 
   document.body.classList.remove(
     'etat-vivant',
     'etat-interdit',
-    'etat-plurivers'
+    'etat-plurivers',
+    'mode-veilleurs',
+    'presence-longue'
   );
 
-  if (climat === 'organique') {
-    document.body.classList.add('etat-vivant');
+  if (climat === 'vivant') {
+
+    document.body.classList.add(
+      'etat-vivant'
+    );
+  }
+
+  if (climat === 'interdit') {
+
+    document.body.classList.add(
+      'etat-interdit'
+    );
+  }
+
+  if (climat === 'plurivers') {
+
+    document.body.classList.add(
+      'etat-plurivers'
+    );
+  }
+
+  if (climat === 'veilleurs') {
+
+    document.body.classList.add(
+      'mode-veilleurs'
+    );
+  }
+
+  if (climat === 'respiration') {
+
+    document.body.classList.add(
+      'presence-longue'
+    );
   }
 }
+
+console.log(
+  'Bridge vivant chargé'
+);
