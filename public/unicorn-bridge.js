@@ -35,7 +35,7 @@ async function traverserAuHasard() {
   try {
 
     const response = await fetch(
-      'https://TON-RENDER.onrender.com/api/traversee'
+      'https://zephyr-navigation-vivante.onrender.com/api/traversee'
     );
 
     const data = await response.json();
