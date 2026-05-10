@@ -65,6 +65,20 @@ const traversees = {
 };
 
 /* ===================================== */
+/* 🌿 ZONES VALIDES */
+/* ===================================== */
+
+const toutesZones =
+  Object.keys(zones).filter(id => {
+
+    return (
+      typeof zones[id] === 'object' &&
+      zones[id].label
+    );
+
+  });
+
+/* ===================================== */
 /* 🌿 CHOIX D’UNE ZONE */
 /* ===================================== */
 
@@ -80,14 +94,11 @@ function choisirZone(
     traversée = null
   } = options;
 
-  const toutesZones =
-    Object.keys(zones);
-
   /* ===================================== */
   /* 🌌 BASE DE CANDIDATS */
   /* ===================================== */
 
-  let candidates = toutesZones;
+  let candidates = [...toutesZones];
 
   /* ===================================== */
   /* 🌀 FILTRE PAR TRAVERSÉE */
@@ -194,7 +205,7 @@ function choisirZone(
 
   if (candidates.length === 0) {
 
-    candidates = toutesZones;
+    candidates = [...toutesZones];
 
   }
 
@@ -236,13 +247,20 @@ function choisirZone(
 
     meta: {
 
-      climat: zone.climat || null,
+      climat:
+        zone.climat || null,
 
-      type: zone.type || null,
+      type:
+        zone.type || null,
 
-      niveau: zone.niveau || null,
+      niveau:
+        zone.niveau || null,
 
-      rarete: zone.rarete || 0
+      rarete:
+        zone.rarete || 0,
+
+      famille:
+        zone.famille || null
 
     }
 
@@ -271,7 +289,8 @@ function choisirTraversee() {
 
     id,
 
-    traversée: traversees[id]
+    traversee:
+      traversees[id]
 
   };
 
