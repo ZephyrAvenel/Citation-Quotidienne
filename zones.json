@@ -1,0 +1,37 @@
+{
+  "porte-vivant": {
+    "label": "Porte du Vivant",
+    "type": "seuil",
+    "intensite": 0.3,
+    "climat": "organique",
+    "rarete": 0.2,
+    "liens": [
+      "habitabilite",
+      "manifeste-auteur"
+    ]
+  },
+
+  "habitabilite": {
+    "label": "Habitabilité",
+    "type": "terre",
+    "intensite": 0.4,
+    "climat": "respiration",
+    "rarete": 0.1,
+    "liens": [
+      "za-chic-planete-final",
+      "point-jonction"
+    ]
+  },
+
+  "numerique-est-un-recit": {
+    "label": "Le numérique est un récit",
+    "type": "critique",
+    "intensite": 0.8,
+    "climat": "lucidite",
+    "rarete": 0.4,
+    "liens": [
+      "structures",
+      "art-ecriture-augmentees"
+    ]
+  }
+}
