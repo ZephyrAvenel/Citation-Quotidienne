@@ -138,12 +138,40 @@ async function traverserAuHasard() {
 
     setTimeout(() => {
 
+      /* ============================== */
+      /* 🌌 NAVIGATION PAR ANCRE */
+      /* ============================== */
+
       if (data.ancre) {
 
-        window.location.hash =
-          data.ancre;
+        const id =
+          data.ancre.replace('#', '');
 
-      } else {
+        const cible =
+          document.getElementById(id);
+
+        if (cible) {
+
+          cible.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+        } else {
+
+          console.warn(
+            'Ancre introuvable :',
+            data.ancre
+          );
+        }
+
+      }
+
+      /* ============================== */
+      /* 🌿 FALLBACK */
+      /* ============================== */
+
+      else {
 
         const cible =
           document.getElementById(data.zone);
@@ -155,6 +183,12 @@ async function traverserAuHasard() {
             block: 'start'
           });
 
+        } else {
+
+          console.warn(
+            'Zone introuvable :',
+            data.zone
+          );
         }
       }
 
