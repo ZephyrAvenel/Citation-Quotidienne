@@ -1,7 +1,13 @@
 {
+  "version": "2.0",
+  "univers": "Cosmologie des Récits Vivants",
+  "auteur": "Zéphyr Avenel",
+
   "porte-vivant": {
     "label": "Porte du Vivant",
     "type": "seuil",
+    "famille": "passage",
+    "niveau": "immersion",
     "intensite": 0.3,
     "climat": "vivant",
     "rarete": 0.2,
@@ -17,6 +23,8 @@
   "habitabilite": {
     "label": "Habitabilité",
     "type": "terre",
+    "famille": "respiration",
+    "niveau": "surface",
     "intensite": 0.4,
     "climat": "respiration",
     "rarete": 0.1,
@@ -32,6 +40,8 @@
   "numerique-est-un-recit": {
     "label": "Le numérique est un récit",
     "type": "critique",
+    "famille": "structures",
+    "niveau": "profondeur",
     "intensite": 0.8,
     "climat": "plurivers",
     "rarete": 0.4,
@@ -47,6 +57,8 @@
   "atlas-recits-vivants": {
     "label": "Atlas des Récits Vivants",
     "type": "cartographie",
+    "famille": "orientation",
+    "niveau": "profondeur",
     "intensite": 0.7,
     "climat": "plurivers",
     "rarete": 0.25,
@@ -55,13 +67,16 @@
     "liens": [
       "marge-vivante",
       "point-jonction",
-      "radio-recits-vivants"
+      "radio-recits-vivants",
+      "acte2-grandes-cartes"
     ]
   },
 
   "radio-recits-vivants": {
     "label": "Radio des Récits Vivants",
     "type": "ecoute",
+    "famille": "transmission",
+    "niveau": "immersion",
     "intensite": 0.5,
     "climat": "veilleurs",
     "rarete": 0.18,
@@ -70,13 +85,16 @@
     "liens": [
       "habitabilite",
       "porte-vivant",
-      "marge-vivante"
+      "marge-vivante",
+      "chatContainer"
     ]
   },
 
   "marge-vivante": {
     "label": "Marge Vivante",
     "type": "limite",
+    "famille": "lisiere",
+    "niveau": "profondeur",
     "intensite": 0.6,
     "climat": "veilleurs",
     "rarete": 0.35,
@@ -85,13 +103,16 @@
     "liens": [
       "atlas-recits-vivants",
       "porte-vivant",
-      "au-seuil-visible"
+      "au-seuil-visible",
+      "failleHidden"
     ]
   },
 
   "au-seuil-visible": {
     "label": "Au seuil du visible",
     "type": "presence",
+    "famille": "perception",
+    "niveau": "profondeur",
     "intensite": 0.7,
     "climat": "interdit",
     "rarete": 0.42,
@@ -107,6 +128,8 @@
   "point-jonction": {
     "label": "Point de Jonction",
     "type": "passage",
+    "famille": "bascule",
+    "niveau": "profondeur",
     "intensite": 0.75,
     "climat": "plurivers",
     "rarete": 0.3,
@@ -115,13 +138,16 @@
     "liens": [
       "atlas-recits-vivants",
       "habitabilite",
-      "radio-recits-vivants"
+      "radio-recits-vivants",
+      "mini-cosmologies"
     ]
   },
 
   "art-ecriture-augmentees": {
     "label": "Art & Écriture augmentées",
     "type": "creation",
+    "famille": "emergence",
+    "niveau": "immersion",
     "intensite": 0.55,
     "climat": "vivant",
     "rarete": 0.2,
@@ -137,6 +163,8 @@
   "manifeste-auteur": {
     "label": "Manifeste d’Auteur",
     "type": "orientation",
+    "famille": "voix",
+    "niveau": "surface",
     "intensite": 0.45,
     "climat": "respiration",
     "rarete": 0.12,
@@ -146,6 +174,193 @@
       "porte-vivant",
       "art-ecriture-augmentees",
       "habitabilite"
+    ]
+  },
+
+  "porte-plurivers": {
+    "label": "La Porte du Plurivers",
+    "type": "porte",
+    "famille": "cosmologie",
+    "niveau": "immersion",
+    "intensite": 0.82,
+    "climat": "plurivers",
+    "rarete": 0.48,
+    "fragment": "D’autres récits existent encore sous les récits dominants.",
+    "ancre": "#porte-plurivers",
+    "liens": [
+      "plurivers",
+      "acte2-grandes-cartes",
+      "mini-cosmologies"
+    ]
+  },
+
+  "plurivers": {
+    "label": "Du multivers au plurivers",
+    "type": "traversee-guidee",
+    "famille": "cosmologie",
+    "niveau": "immersion",
+    "intensite": 0.88,
+    "climat": "plurivers",
+    "rarete": 0.5,
+    "fragment": "Le réel n’est pas un décor. Il apparaît, se relie, se transforme.",
+    "ancre": "#plurivers",
+    "liens": [
+      "porte-plurivers",
+      "acte2-grandes-cartes",
+      "point-jonction"
+    ]
+  },
+
+  "mini-cosmologies": {
+    "label": "Mini-cosmologies opérationnelles",
+    "type": "cartographie",
+    "famille": "repères",
+    "niveau": "profondeur",
+    "intensite": 0.72,
+    "climat": "cosmologie",
+    "rarete": 0.33,
+    "fragment": "Non pas pour comprendre. Mais pour apprendre à mieux percevoir.",
+    "ancre": "#mini-cosmologies",
+    "liens": [
+      "plurivers",
+      "point-jonction",
+      "atlas-recits-vivants"
+    ]
+  },
+
+  "acte2-passages": {
+    "label": "Cartographie des transformations humaines",
+    "type": "cartographie",
+    "famille": "passages",
+    "niveau": "immersion",
+    "intensite": 0.69,
+    "climat": "mythes",
+    "rarete": 0.24,
+    "fragment": "Les mythes et les seuils racontent souvent les mêmes passages sous des formes différentes.",
+    "ancre": "#acte2-passages",
+    "liens": [
+      "acte2-grandes-cartes",
+      "acte2-resonance",
+      "mini-cosmologies"
+    ]
+  },
+
+  "acte2-grandes-cartes": {
+    "label": "La grande carte des récits vivants",
+    "type": "grande-carte",
+    "famille": "fondatrice",
+    "niveau": "profondeur",
+    "intensite": 0.91,
+    "climat": "cartographie",
+    "rarete": 0.44,
+    "fragment": "Une spirale, une boussole, et une question : quels récits voulons-nous transmettre ?",
+    "ancre": "#acte2-grandes-cartes",
+    "liens": [
+      "atlas-recits-vivants",
+      "acte2-passages",
+      "acte2-resonance"
+    ]
+  },
+
+  "acte2-resonance": {
+    "label": "Le seuil de résonance",
+    "type": "resonance",
+    "famille": "décantation",
+    "niveau": "profondeur",
+    "intensite": 0.74,
+    "climat": "résonance",
+    "rarete": 0.36,
+    "fragment": "Non pas pour conclure, mais pour ouvrir le regard.",
+    "ancre": "#acte2-resonance",
+    "liens": [
+      "acte2-grandes-cartes",
+      "point-jonction",
+      "chatContainer"
+    ]
+  },
+
+  "failleHidden": {
+    "label": "Les Portes du Seuil",
+    "type": "secret",
+    "famille": "passage-cache",
+    "niveau": "caché",
+    "intensite": 0.92,
+    "climat": "interdit",
+    "rarete": 0.85,
+    "fragment": "Certaines failles ne détruisent pas les cartes. Elles révèlent des passages invisibles.",
+    "ancre": "#failleHidden",
+    "liens": [
+      "marge-vivante",
+      "humour",
+      "porte-plurivers"
+    ]
+  },
+
+  "humour": {
+    "label": "Humour comme arme douce",
+    "type": "detour",
+    "famille": "souplesse",
+    "niveau": "surface",
+    "intensite": 0.28,
+    "climat": "souffle",
+    "rarete": 0.18,
+    "fragment": "Et parfois, la fissure préfère passer par le rire.",
+    "ancre": "#humour",
+    "liens": [
+      "failleHidden",
+      "radio-recits-vivants",
+      "marge-vivante"
+    ]
+  },
+
+  "seuil-film": {
+    "label": "Cinq passages pour traverser les seuils",
+    "type": "sequence",
+    "famille": "traversee-guidee",
+    "niveau": "immersion",
+    "intensite": 0.77,
+    "climat": "cinématique",
+    "rarete": 0.31,
+    "fragment": "Certaines traversées ne demandent pas une réponse. Seulement une qualité d’attention.",
+    "ancre": "#seuil-film",
+    "liens": [
+      "porte-vivant",
+      "acte3",
+      "point-jonction"
+    ]
+  },
+
+  "chatContainer": {
+    "label": "Espace de dialogue",
+    "type": "chambre",
+    "famille": "dialogue",
+    "niveau": "immersion",
+    "intensite": 0.58,
+    "climat": "présence",
+    "rarete": 0.22,
+    "fragment": "Certaines questions demandent un lieu juste pour être déposées.",
+    "ancre": "#chatContainer",
+    "liens": [
+      "radio-recits-vivants",
+      "acte2-resonance",
+      "manifeste-auteur"
+    ]
+  },
+
+  "choisir-sa-porte": {
+    "label": "Choisir sa porte",
+    "type": "orientation",
+    "famille": "navigation",
+    "niveau": "surface",
+    "intensite": 0.42,
+    "climat": "constellation",
+    "rarete": 0.15,
+    "fragment": "Tous les chemins n’ouvrent pas la même expérience.",
+    "ancre": "#choisir-sa-porte",
+    "liens": [
+      "porte-vivant",
+      "porte-plurivers",
+      "chatContainer"
     ]
   }
 }
