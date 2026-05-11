@@ -356,5 +356,57 @@
       "porte-plurivers",
       "chatContainer"
     ]
-  }
+  },
+
+  "chambre-solaire": {
+  "label": "Chambre solaire",
+  "type": "clairiere",
+  "famille": "reouverture",
+  "niveau": "respiration",
+  "intensite": 0.22,
+  "climat": "solaire",
+  "rarete": 0.16,
+  "fragment": "Certaines lumières ne cherchent pas à aveugler. Elles rendent simplement le monde plus habitable.",
+  "ancre": "#chambre-solaire",
+  "liens": [
+    "concentration-narrative",
+    "cosmologie-recits-vivants",
+    "radio-recits-vivants"
+  ]
+ },
+
+ "chambre-fractale": {
+  "label": "Chambre fractale lente",
+  "type": "fractale",
+  "famille": "decantation",
+  "niveau": "immersion",
+  "intensite": 0.35,
+  "climat": "fractale",
+  "rarete": 0.24,
+  "fragment": "Certaines formes n’expliquent rien. Elles ralentissent simplement la perception.",
+  "ancre": "#chambre-fractale",
+  "liens": [
+    "marge-vivante",
+    "point-jonction",
+    "acte2-resonance"
+  ]
+ },
+
+"chambre-respiration": {
+  "label": "Chambre de respiration visuelle",
+  "type": "respiration",
+  "famille": "clairiere",
+  "niveau": "surface",
+  "intensite": 0.18,
+  "climat": "respiration",
+  "rarete": 0.14,
+  "fragment": "Il existe des lieux où le regard n’a plus besoin de comprendre immédiatement.",
+  "ancre": "#chambre-respiration",
+  "liens": [
+    "radio-recits-vivants",
+    "habitabilite",
+    "point-jonction"
+  ]
+}
+  
 }
