@@ -340,6 +340,21 @@ function appliquerClimat(climat) {
       'presence-longue'
     );
   }
+
+  if (climat === 'solaire') {
+
+  document.body.classList.add(
+    'etat-solaire'
+  );
+ }
+
+  if (climat === 'fractale') {
+
+  document.body.classList.add(
+    'etat-fractale'
+  );
+ }
+
 }
 
 console.log(
