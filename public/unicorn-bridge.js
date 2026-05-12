@@ -1,3 +1,9 @@
+let traverseeEnCours = false;
+
+/* ===================================== */
+/* 🌿 SESSION LOCALE */
+/* ===================================== */
+
 function verifierSessionLocale() {
 
   let traversees = Number(
@@ -56,11 +62,23 @@ function sauvegarderHistorique(zone) {
 
 async function traverserAuHasard() {
 
+  /* ===================================== */
+  /* 🚫 ÉVITE DOUBLE CLIC */
+  /* ===================================== */
+
+  if (traverseeEnCours) {
+    return;
+  }
+
+  traverseeEnCours = true;
+
   const session = verifierSessionLocale();
 
   if (!session.autorise) {
 
     afficherFragment(session.message);
+
+    traverseeEnCours = false;
 
     return;
   }
@@ -85,6 +103,14 @@ async function traverserAuHasard() {
 
     bouton.style.cursor = 'wait';
   }
+
+  /* ===================================== */
+  /* 🌫️ MESSAGE IMMÉDIAT */
+  /* ===================================== */
+
+  afficherFragment(
+    '🌀 Le territoire s’éveille…'
+  );
 
   try {
 
@@ -229,6 +255,12 @@ async function traverserAuHasard() {
         }
       }
 
+      /* ===================================== */
+      /* 🔓 FIN TRAVERSÉE */
+      /* ===================================== */
+
+      traverseeEnCours = false;
+
     }, 6700);
 
   } catch (error) {
@@ -253,6 +285,8 @@ async function traverserAuHasard() {
     afficherFragment(
       'La traversée semble momentanément indisponible.'
     );
+
+    traverseeEnCours = false;
   }
 }
 
@@ -303,7 +337,9 @@ function appliquerClimat(climat) {
     'etat-interdit',
     'etat-plurivers',
     'mode-veilleurs',
-    'presence-longue'
+    'presence-longue',
+    'etat-solaire',
+    'etat-fractale'
   );
 
   if (climat === 'vivant') {
@@ -343,18 +379,17 @@ function appliquerClimat(climat) {
 
   if (climat === 'solaire') {
 
-  document.body.classList.add(
-    'etat-solaire'
-  );
- }
+    document.body.classList.add(
+      'etat-solaire'
+    );
+  }
 
   if (climat === 'fractale') {
 
-  document.body.classList.add(
-    'etat-fractale'
-  );
- }
-
+    document.body.classList.add(
+      'etat-fractale'
+    );
+  }
 }
 
 console.log(
