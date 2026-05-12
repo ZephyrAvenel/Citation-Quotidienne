@@ -14,7 +14,8 @@ const traversees = {
       "radio-recits-vivants",
       "acte2-resonance",
       "chatContainer",
-      "habitabilite"
+      "habitabilite",
+      "boussole-recits-habitables"
     ]
   },
 
@@ -58,7 +59,8 @@ const traversees = {
       "atlas-recits-vivants",
       "acte2-passages",
       "acte2-grandes-cartes",
-      "mini-cosmologies"
+      "mini-cosmologies",
+      "boussole-recits-habitables"
     ]
   }
 
