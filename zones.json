@@ -407,6 +407,25 @@
     "habitabilite",
     "point-jonction"
   ]
+},
+
+"boussole-recits-habitables": {
+  "label": "Boussole des récits habitables",
+  "type": "orientation",
+  "famille": "discernement",
+  "niveau": "respiration",
+  "intensite": 0.26,
+  "climat": "respiration",
+  "rarete": 0.18,
+  "fragment": "Une boussole n’indique pas quoi penser. Elle aide à sentir ce qui demeure habitable.",
+  "ancre": "#boussole-recits-habitables",
+  "liens": [
+    "habitabilite",
+    "point-jonction",
+    "chambre-respiration",
+    "chambre-solaire",
+    "atlas-recits-vivants"
+  ]
 }
   
 }
